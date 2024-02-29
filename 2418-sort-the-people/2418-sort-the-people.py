@@ -5,11 +5,11 @@ class Solution(object):
         :type heights: List[int]
         :rtype: List[str]
         """
-        for i in range(len(heights)):
-            for j in range(len(heights) - 1):
-                if heights[j] < heights[j+1]:
-                    heights[j], heights[j+1] = heights[j+1], heights[j]
-                    names[j], names[j+1] = names[j+1], names[j]
-
+        for i in range(len(names)):
+            max_index = i
+            for j in range(i + 1, len(names)):
+                if heights[j] > heights[max_index]:
+                    max_index = j
+            heights[i], heights[max_index] = heights[max_index], heights[i]
+            names[i], names[max_index] = names[max_index], names[i]
         return names
-
